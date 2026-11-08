@@ -1,0 +1,16 @@
+{
+  "name": "ziv-celestial-wt-backend",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Experiment 10 Node.js, Express and MongoDB backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  }
+}

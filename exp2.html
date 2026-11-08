@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziv Celestial | Customer Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+        }
+
+       header {
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+    background-image:
+        linear-gradient(rgba(0, 40, 25, 0.65), rgba(0, 40, 25, 0.65)),
+        url("images/burger.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 0 15px 15px;
+        }
+
+        header img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin: 15px 0 5px;
+        }
+
+        header p {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #2daa64;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+        }
+
+        input[type="color"],
+        input[type="range"],
+        input[type="file"] {
+            width: auto;
+        }
+
+        .buttons {
+            text-align: center;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background: #2daa64;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+   <header>
+    <img src="images/logo.png" alt="Ziv Celestial Logo">
+    <h1>Ziv Celestial</h1>
+    <p>Customer Registration</p>
+    </header>
+
+    <div class="container">
+
+        <h2>Register</h2>
+
+        <form>
+
+            <label>Customer Name</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Email Address</label>
+            <input type="email" placeholder="example@gmail.com" required>
+
+            <label>Password</label>
+            <input type="password" required>
+
+            <label>Mobile Number</label>
+            <input type="number" min="6000000000" max="9999999999" required>
+
+            <label>Date of Birth</label>
+            <input type="date">
+
+            <label>Gender</label><br>
+
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+            <input type="radio" name="gender"> Other
+
+            <br><br>
+
+            <label>Food Preference</label><br>
+
+            <input type="checkbox"> Vegetarian
+            <input type="checkbox"> Non-Vegetarian
+            <input type="checkbox"> Vegan
+
+            <br><br>
+
+            <label>Preferred Meal</label>
+
+            <select>
+
+                <option>Breakfast</option>
+                <option>Lunch</option>
+                <option>Snacks</option>
+                <option>Dinner</option>
+
+            </select>
+
+            <label>Delivery Address</label>
+
+            <textarea rows="4" placeholder="Enter your address"></textarea>
+
+            <label>Favourite Theme Color</label><br>
+
+            <input type="color">
+
+            <br><br>
+
+            <label>Upload Profile Picture</label><br>
+
+            <input type="file">
+
+            <br><br>
+
+            <label>Ordering Experience</label><br>
+
+            <input type="range" min="1" max="10">
+
+            <div class="buttons">
+
+                <input type="submit" value="Register">
+
+                <input type="reset" value="Clear">
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <footer>
+
+        <p>© 2026 Ziv Celestial | Food Pre-Order Platform</p>
+
+    </footer>
+
+</body>
+
+</html>

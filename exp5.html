@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ziv Celestial - JavaScript Applications</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+        }
+
+        header {
+            background: #176b45;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        section {
+            background: white;
+            max-width: 700px;
+            margin: 25px auto;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        h2 {
+            color: #176b45;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 6px;
+        }
+
+        button {
+            background: #176b45;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #0f4f32;
+        }
+
+        #garden img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            margin: 5px;
+        }
+
+        #coin {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Ziv Celestial</h1>
+    <p>JavaScript DOM Elements and Events</p>
+</header>
+
+
+<!-- QUESTION 1 -->
+<section>
+    <h2>1. Shortest and Longest Word</h2>
+
+    <input type="text" id="sentence"
+           value="Web Development Tutorial">
+
+    <button onclick="findWords()">Find Words</button>
+
+    <p>Shortest Word:
+        <span id="shortest"></span>
+    </p>
+
+    <p>Longest Word:
+        <span id="longest"></span>
+    </p>
+</section>
+
+
+<!-- QUESTION 2 -->
+<section>
+    <h2>2. BMI Calculator</h2>
+
+    <input type="number" id="weight"
+           placeholder="Weight (kg)">
+
+    <input type="number" id="height"
+           placeholder="Height (m)">
+
+    <br>
+
+    <button onclick="calculateBMI()">
+        Calculate BMI
+    </button>
+
+    <p>Your BMI:
+        <span id="score"></span>
+    </p>
+
+    <p>Body Type:
+        <span id="type"></span>
+    </p>
+</section>
+
+
+<!-- QUESTION 3 -->
+<section>
+    <h2>3. Fruit Farm</h2>
+
+    <label>Rows:</label>
+
+    <input type="number"
+           id="rows"
+           value="2"
+           min="1">
+
+    <label>Columns:</label>
+
+    <input type="number"
+           id="columns"
+           value="3"
+           min="1">
+
+    <br>
+
+    <button onclick="growGarden()">
+        Plant Garden
+    </button>
+
+    <div id="garden"></div>
+</section>
+
+
+<!-- QUESTION 4 -->
+<section>
+    <h2>4. Currency Converter</h2>
+
+    <input type="number"
+           id="amount"
+           placeholder="Enter amount">
+
+    <br>
+
+    <select id="from">
+        <option value="INR">Indian Rupee</option>
+        <option value="USD">US Dollar</option>
+    </select>
+
+    <select id="to">
+        <option value="USD">US Dollar</option>
+        <option value="INR">Indian Rupee</option>
+    </select>
+
+    <br>
+
+    <button onclick="convertCurrency()">
+        Convert
+    </button>
+
+    <p>Converted Amount:
+        <span id="answer"></span>
+    </p>
+</section>
+
+
+<!-- QUESTION 5 -->
+<section>
+    <h2>5. Coin Flip</h2>
+
+    <img src="images/heads.jpg"
+         id="coin"
+         alt="Coin">
+
+    <br><br>
+
+    <button id="flip">
+        Flip Coin
+    </button>
+
+    <p>Heads:
+        <span id="num_heads">0</span>
+    </p>
+
+    <p>Tails:
+        <span id="num_tails">0</span>
+    </p>
+</section>
+
+
+<!-- QUESTION 6 -->
+<section>
+    <h2>6. Birthday Cake Order</h2>
+
+    <label>½ kg Cake:</label>
+    <input type="number"
+           id="small"
+           value="0"
+           min="0">
+
+    <br>
+
+    <label>1 kg Cake:</label>
+    <input type="number"
+           id="medium"
+           value="0"
+           min="0">
+
+    <br>
+
+    <label>2 kg Cake:</label>
+    <input type="number"
+           id="large"
+           value="0"
+           min="0">
+
+    <h3>Select Tip</h3>
+
+    <label>
+        <input type="radio"
+               name="tip"
+               value="10">
+        10%
+    </label>
+
+    <label>
+        <input type="radio"
+               name="tip"
+               value="15"
+               checked>
+        15%
+    </label>
+
+    <label>
+        <input type="radio"
+               name="tip"
+               value="20">
+        20%
+    </label>
+
+    <br><br>
+
+    <button id="submit">
+        Calculate Order
+    </button>
+
+    <p>Total Cost:
+        ₹<span id="price"></span>
+    </p>
+</section>
+
+
+<script>
+
+    /* QUESTION 1 */
+
+    function findWords() {
+
+        var text =
+            document.getElementById("sentence").value;
+
+        var words = text.trim().split(/\s+/);
+
+        var shortest = words[0];
+        var longest = words[0];
+
+        for (var i = 1; i < words.length; i++) {
+
+            if (words[i].length < shortest.length) {
+                shortest = words[i];
+            }
+
+            if (words[i].length > longest.length) {
+                longest = words[i];
+            }
+        }
+
+        document.getElementById("shortest").innerHTML =
+            shortest;
+
+        document.getElementById("longest").innerHTML =
+            longest;
+    }
+
+
+    /* QUESTION 2 */
+
+    function calculateBMI() {
+
+        var weight =
+            parseFloat(
+                document.getElementById("weight").value
+            );
+
+        var height =
+            parseFloat(
+                document.getElementById("height").value
+            );
+
+        if (weight <= 0 || height <= 0) {
+            alert("Enter valid values.");
+            return;
+        }
+
+        var bmi =
+            weight / (height * height);
+
+        document.getElementById("score").innerHTML =
+            bmi.toFixed(2);
+
+        if (bmi < 18) {
+            document.getElementById("type").innerHTML =
+                "Underweight";
+        }
+        else if (bmi <= 25) {
+            document.getElementById("type").innerHTML =
+                "Normal";
+        }
+        else if (bmi <= 30) {
+            document.getElementById("type").innerHTML =
+                "Overweight";
+        }
+        else {
+            document.getElementById("type").innerHTML =
+                "Obese";
+        }
+    }
+
+
+    /* QUESTION 3 */
+
+    function growGarden() {
+
+        var rows =
+            parseInt(
+                document.getElementById("rows").value
+            );
+
+        var columns =
+            parseInt(
+                document.getElementById("columns").value
+            );
+
+        var garden =
+            document.getElementById("garden");
+
+        garden.innerHTML = "";
+
+        var fruits = [
+            "apple.jpg",
+            "orange.jpg"
+        ];
+
+        for (var i = 0; i < rows * columns; i++) {
+
+            var fruit =
+                fruits[Math.floor(Math.random() * 2)];
+
+            garden.innerHTML +=
+                "<img src='images/" +
+                fruit +
+                "' alt='Fruit'>";
+        }
+    }
+
+
+    /* QUESTION 4 */
+
+    function convertCurrency() {
+
+        var amount =
+            parseFloat(
+                document.getElementById("amount").value
+            );
+
+        var from =
+            document.getElementById("from").value;
+
+        var to =
+            document.getElementById("to").value;
+
+        if (isNaN(amount)) {
+            alert("Enter an amount.");
+            return;
+        }
+
+        var result;
+
+        if (from === "INR" && to === "USD") {
+            result = amount * 0.015;
+        }
+        else if (from === "USD" && to === "INR") {
+            result = amount * 67.12;
+        }
+        else {
+            result = amount;
+        }
+
+        document.getElementById("answer").innerHTML =
+            result.toFixed(2) + " " + to;
+    }
+
+
+    /* QUESTION 5 */
+
+    var heads = 0;
+    var tails = 0;
+
+    document.getElementById("flip")
+        .addEventListener("click", flipCoin);
+
+    function flipCoin() {
+
+        var result =
+            Math.floor(Math.random() * 2);
+
+        if (result === 0) {
+
+            heads++;
+
+            document.getElementById("coin").src =
+                "images/heads.jpg";
+
+            document.getElementById("num_heads").innerHTML =
+                heads;
+        }
+        else {
+
+            tails++;
+
+            document.getElementById("coin").src =
+                "images/tails.jpg";
+
+            document.getElementById("num_tails").innerHTML =
+                tails;
+        }
+    }
+
+
+    /* QUESTION 6 */
+
+    document.getElementById("submit")
+        .addEventListener(
+            "click",
+            calculateOrder
+        );
+
+    function calculateOrder() {
+
+        var small =
+            parseInt(
+                document.getElementById("small").value
+            ) || 0;
+
+        var medium =
+            parseInt(
+                document.getElementById("medium").value
+            ) || 0;
+
+        var large =
+            parseInt(
+                document.getElementById("large").value
+            ) || 0;
+
+        var tip =
+            parseInt(
+                document.querySelector(
+                    'input[name="tip"]:checked'
+                ).value
+            );
+
+        var subtotal =
+            (small * 100) +
+            (medium * 200) +
+            (large * 400);
+
+        var tax =
+            subtotal * 0.09;
+
+        var total =
+            subtotal + tax;
+
+        total =
+            total + (total * tip / 100);
+
+        document.getElementById("price").innerHTML =
+            total.toFixed(2);
+    }
+
+</script>
+
+</body>
+</html>

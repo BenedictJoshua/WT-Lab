@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ziv Celestial | Experiment 7 – jQuery</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;font:16px Arial,sans-serif;background:#f7f5f0;color:#252525}header{background:#241b18;color:#fff;padding:24px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}header a{color:#f4c98b;margin-left:16px;text-decoration:none}.wrap{max-width:1100px;margin:28px auto;padding:0 18px}.intro{background:#fff2df;padding:24px;border-radius:16px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:20px}.card{background:white;padding:22px;border-radius:15px;box-shadow:0 5px 20px #0000000c}.card h2{margin-top:0;color:#8d4428}label{display:block;margin:12px 0 5px}input,select{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px}button{margin-top:14px;background:#8d4428;color:white;border:0;padding:11px 16px;border-radius:8px;cursor:pointer}output,.result{display:block;margin-top:12px;font-weight:bold;color:#286044}.custom-preview{height:110px;border-radius:12px;background:#d7b18a;margin-top:12px;border:5px solid #777}footer{text-align:center;padding:25px;color:#777}
+</style>
+</head>
+<body>
+<header><strong>ZIV CELESTIAL</strong><nav><a href="exp1.html">Home</a><a href="exp5.html">Exp 5</a><a href="exp6.html">Exp 6</a><a href="exp7.html">Exp 7</a><a href="exp8.html">Exp 8</a></nav></header>
+<main class="wrap">
+<section class="intro"><h1>Experiment 7 · Working with jQuery</h1><p>Interactive food-service utilities demonstrating jQuery selectors, events, DOM updates and calculations.</p></section>
+<div class="grid">
+<section class="card"><h2>1. Monthly Budget Calculator</h2><label>Monthly budget (₹)</label><input id="budget" type="number" min="1" placeholder="e.g. 12000"><label>Food (%)</label><input id="foodPct" type="number" min="0" max="100" value="35"><label>Travel (%)</label><input id="travelPct" type="number" min="0" max="100" value="20"><label>Savings (%)</label><input id="savePct" type="number" min="0" max="100" value="25"><button id="budgetBtn">Calculate budget</button><p id="budgetResult" class="result" aria-live="polite"></p></section>
+<section class="card"><h2>2. Cake Order Calculator</h2><label>½ kg cakes (₹100 each)</label><input id="half" type="number" min="0" value="0"><label>1 kg cakes (₹200 each)</label><input id="one" type="number" min="0" value="0"><label>2 kg cakes (₹400 each)</label><input id="two" type="number" min="0" value="0"><label>Tip</label><select id="tip"><option value="10">10%</option><option value="15" selected>15%</option><option value="20">20%</option></select><button id="cakeBtn">Calculate order</button><p id="cakeResult" class="result" aria-live="polite"></p></section>
+<section class="card"><h2>3. Customise Your Delivery Bike</h2><label>Body colour</label><select id="bodyColour"><option value="#d7b18a">Sand</option><option value="#8d4428">Terracotta</option><option value="#273b32">Forest</option><option value="#d6a52b">Golden</option></select><label>Glass tint</label><select id="glassTint"><option value="0.2">Light</option><option value="0.55">Medium</option><option value="0.85">Dark</option></select><label>Tyre size</label><select id="tyreSize"><option value="5">Standard</option><option value="9">Large</option><option value="13">Extra large</option></select><div id="bikePreview" class="custom-preview"></div><p id="bikeResult" class="result">Your delivery bike is ready to customise.</p></section>
+</div></main><footer>Ziv Celestial · Web Technology Lab</footer>
+<script>
+$(function(){
+ $('#budgetBtn').on('click',function(){const b=Number($('#budget').val()),p=[Number($('#foodPct').val()),Number($('#travelPct').val()),Number($('#savePct').val())],sum=p.reduce((a,v)=>a+v,0);if(b<=0||p.some(v=>v<0||v>100)||sum!==100){$('#budgetResult').text('Enter a positive budget and percentages that total exactly 100%.');return;}$('#budgetResult').text('Food: ₹'+(b*p[0]/100).toFixed(2)+' · Travel: ₹'+(b*p[1]/100).toFixed(2)+' · Savings: ₹'+(b*p[2]/100).toFixed(2));});
+ $('#cakeBtn').on('click',function(){const qty=[Number($('#half').val()),Number($('#one').val()),Number($('#two').val())];if(qty.some(v=>v<0||!Number.isFinite(v))){$('#cakeResult').text('Please enter valid quantities.');return;}const subtotal=qty[0]*100+qty[1]*200+qty[2]*400,tax=subtotal*.09,tip=(subtotal+tax)*Number($('#tip').val())/100;$('#cakeResult').text('Subtotal ₹'+subtotal.toFixed(2)+' + tax ₹'+tax.toFixed(2)+' + tip ₹'+tip.toFixed(2)+' = Total ₹'+(subtotal+tax+tip).toFixed(2));});
+ function updateBike(){const c=$('#bodyColour').val(),t=Number($('#glassTint').val()),s=Number($('#tyreSize').val());$('#bikePreview').css({background:c,filter:'saturate('+(1+t)+')',borderWidth:s+'px'});$('#bikeResult').text('Custom setup applied · tint '+Math.round(t*100)+'% · tyre '+s+'px');}
+ $('#bodyColour,#glassTint,#tyreSize').on('change',updateBike);updateBike();
+});
+</script></body></html>

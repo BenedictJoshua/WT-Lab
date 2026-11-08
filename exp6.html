@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ziv Celestial - Campus Food</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            color: #333;
+            transition: background-color 0.5s;
+        }
+
+        /* HEADER */
+        header {
+            background: #176b45;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 13px;
+            margin-top: 4px;
+            opacity: 0.9;
+        }
+
+        #clock {
+            font-size: 20px;
+            font-weight: bold;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: white;
+            padding: 15px 7%;
+            box-shadow: 0 2px 8px #ddd;
+        }
+
+        nav a {
+            color: #176b45;
+            text-decoration: none;
+            margin-right: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #0d422a;
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 45px;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 5px 20px #ddd;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin: 0;
+            color: #176b45;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .order-btn {
+            background: #176b45;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .order-btn:hover {
+            background: #0f4f32;
+        }
+
+        /* NOTIFICATION */
+        #welcomeMessage {
+            display: none;
+            max-width: 1100px;
+            margin: 15px auto;
+            padding: 15px;
+            background: #e8f7ef;
+            border-left: 5px solid #176b45;
+            border-radius: 5px;
+        }
+
+        /* FOOD SECTION */
+        .section {
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .section h2 {
+            color: #176b45;
+            font-size: 28px;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .food-card {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px #ddd;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px #ccc;
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .food-card h3 {
+            margin-bottom: 5px;
+        }
+
+        .price {
+            color: #176b45;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* MOVING BANNER */
+        .banner {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: #176b45;
+            height: 120px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .banner-text {
+            color: white;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #movingFood {
+            position: absolute;
+            left: 0;
+            bottom: 5px;
+            width: 75px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .banner button {
+            position: relative;
+            z-index: 2;
+            margin-left: 48%;
+            padding: 7px 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* STUDENT SECTION */
+        .student-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px #ddd;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #176b45;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f0f8f4;
+        }
+
+        .student-btn {
+            background: #176b45;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* COLOR TIMER */
+        .status {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #ddd;
+        }
+
+        #colourStatus {
+            font-weight: bold;
+            color: #176b45;
+        }
+
+        footer {
+            background: #176b45;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero,
+            .section {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            .hero {
+                padding: 30px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <div>
+        <div class="logo">Ziv Celestial</div>
+        <div class="tagline">Campus Food. Made Simple.</div>
+    </div>
+
+    <div id="clock">
+        00:00:00
+    </div>
+
+</header>
+
+
+<!-- NAVIGATION -->
+<nav>
+
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#offers">Student Offers</a>
+    <a href="#about">About</a>
+
+</nav>
+
+
+<!-- WELCOME MESSAGE -->
+<div id="welcomeMessage">
+    Welcome to Ziv Celestial! Your campus food is just a few clicks away.
+</div>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <h1>Good Food.<br>Less Waiting.</h1>
+
+    <p>
+        Pre-order your favourite campus food and skip the queue.
+        Choose your meal, place your order and collect it when
+        it's ready.
+    </p>
+
+    <button class="order-btn"
+            onclick="showOrderMessage()">
+        Order Food
+    </button>
+
+</section>
+
+
+<!-- MENU -->
+<section class="section" id="menu">
+
+    <h2>Today's Favourites</h2>
+
+    <div class="food-grid">
+
+        <div class="food-card"
+             onmouseover="increaseFood(this)"
+             onmouseout="decreaseFood(this)">
+
+            <img src="images/burger.jpg"
+                 alt="Burger">
+
+            <h3>Classic Burger</h3>
+
+            <p>Fresh, crispy and filling.</p>
+
+            <div class="price">₹99</div>
+
+        </div>
+
+
+        <div class="food-card"
+             onmouseover="increaseFood(this)"
+             onmouseout="decreaseFood(this)">
+
+            <img src="images/sandwich.jpg"
+                 alt="Sandwich">
+
+            <h3>Grilled Sandwich</h3>
+
+            <p>Perfect for a quick campus meal.</p>
+
+            <div class="price">₹79</div>
+
+        </div>
+
+
+        <div class="food-card"
+             onmouseover="increaseFood(this)"
+             onmouseout="decreaseFood(this)">
+
+            <img src="images/juice.jpg"
+                 alt="Juice">
+
+            <h3>Fresh Juice</h3>
+
+            <p>Refreshing fruit juice.</p>
+
+            <div class="price">₹49</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MOVING FOOD BANNER -->
+<div class="banner">
+
+    <div class="banner-text">
+        Your food is on the move! 🍔
+    </div>
+
+    <img src="images/burger.jpg"
+         id="movingFood"
+         alt="Food">
+
+    <button onclick="startMoving()">
+        Move
+    </button>
+
+    <button onclick="stopMoving()">
+        Stop
+    </button>
+
+    <button onclick="resetMoving()">
+        Reset
+    </button>
+
+</div>
+
+
+<!-- STUDENT OFFERS -->
+<section class="section" id="offers">
+
+    <h2>Student Offers</h2>
+
+    <div class="student-box">
+
+        <p>
+            Ziv Celestial offers special benefits for campus
+            students.
+        </p>
+
+        <button class="student-btn"
+                onclick="displayStudents()">
+
+            View Student Offers
+
+        </button>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Register No.</th>
+                    <th>Birth Year</th>
+                    <th>Category</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="studentTable">
+
+                <tr>
+                    <td colspan="5">
+                        Click the button to view students.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- JAVASCRIPT OBJECT -->
+<section class="section">
+
+    <h2>Today's Special</h2>
+
+    <div class="student-box">
+
+        <p id="specialFood">
+            Loading today's special...
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- BACKGROUND STATUS -->
+<section class="section">
+
+    <div class="status">
+
+        <h2>Fresh Every Moment</h2>
+
+        <p>
+            Ziv Celestial automatically refreshes its environment
+            periodically using JavaScript timers.
+        </p>
+
+        <p id="colourStatus">
+            Background timer is active.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer id="about">
+
+    <h3>Ziv Celestial</h3>
+
+    <p>
+        Campus food, simplified.
+    </p>
+
+    <p>
+        © 2026 Ziv Celestial
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   PART A - setTimeout()
+   ===================================================== */
+
+/* Welcome message appears after 3 seconds */
+
+setTimeout(function() {
+
+    document.getElementById("welcomeMessage").style.display =
+        "block";
+
+}, 3000);
+
+
+/* =====================================================
+   PART B - Date Object
+   ===================================================== */
+
+function displayClock() {
+
+    var d = new Date();
+
+    var hours = d.getHours();
+    var minutes = d.getMinutes();
+    var seconds = d.getSeconds();
+
+    document.getElementById("clock").innerHTML =
+        String(hours).padStart(2, "0") + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+
+}
+
+
+/* Display clock immediately */
+
+displayClock();
+
+
+/* Update every second */
+
+setInterval(displayClock, 1000);
+
+
+/* =====================================================
+   PART C - Dynamic Background
+   ===================================================== */
+
+function changeBackground() {
+
+    var red =
+        Math.floor(Math.random() * 30) + 235;
+
+    var green =
+        Math.floor(Math.random() * 20) + 235;
+
+    var blue =
+        Math.floor(Math.random() * 20) + 235;
+
+    var color =
+        "rgb(" +
+        red + "," +
+        green + "," +
+        blue +
+        ")";
+
+    document.body.style.backgroundColor =
+        color;
+
+    document.getElementById("colourStatus").innerHTML =
+        "Environment refreshed: " + color;
+
+}
+
+
+/* Change background every 30 seconds */
+
+setInterval(changeBackground, 30000);
+
+
+/* =====================================================
+   PART D - Mouse Events
+   ===================================================== */
+
+function increaseFood(card) {
+
+    card.style.transform =
+        "translateY(-8px) scale(1.02)";
+
+}
+
+
+function decreaseFood(card) {
+
+    card.style.transform =
+        "translateY(0) scale(1)";
+
+}
+
+
+/* =====================================================
+   PART E - Recursive Animation
+   ===================================================== */
+
+var animate = null;
+
+
+function moveRight() {
+
+    var food =
+        document.getElementById("movingFood");
+
+    var position =
+        parseInt(food.style.left) || 0;
+
+
+    if (position < 1000) {
+
+        food.style.left =
+            (position + 5) + "px";
+
+
+        /*
+           Recursive setTimeout.
+           The next movement is scheduled
+           after 20 milliseconds.
+        */
+
+        animate =
+            setTimeout(moveRight, 20);
+
+    }
+
+}
+
+
+function startMoving() {
+
+    if (animate == null) {
+
+        moveRight();
+
+    }
+
+}
+
+
+function stopMoving() {
+
+    clearTimeout(animate);
+
+    animate = null;
+
+}
+
+
+function resetMoving() {
+
+    clearTimeout(animate);
+
+    animate = null;
+
+    document.getElementById("movingFood").style.left =
+        "0px";
+
+}
+
+
+/* =====================================================
+   PART F - Classes and Objects
+   ===================================================== */
+
+class FoodItem {
+
+    constructor(name, price) {
+
+        this.name = name;
+        this.price = price;
+
+    }
+
+
+    present() {
+
+        return this.name +
+               " - ₹" +
+               this.price;
+
+    }
+
+}
+
+
+/* Create a FoodItem object */
+
+var special =
+    new FoodItem("Ziv Special Burger", 129);
+
+
+/* Display object information */
+
+document.getElementById("specialFood").innerHTML =
+    "Today's Special: <b>" +
+    special.present() +
+    "</b>";
+
+
+/* =====================================================
+   PART G - Array of Student Objects
+   ===================================================== */
+
+var students = [
+
+    {
+        name: "John",
+        regno: "UR13CS129",
+        year: 1999
+    },
+
+    {
+        name: "Mary",
+        regno: "UR13CS130",
+        year: 2002
+    },
+
+    {
+        name: "David",
+        regno: "UR13CS131",
+        year: 1998
+    },
+
+    {
+        name: "Sarah",
+        regno: "UR13CS132",
+        year: 2001
+    }
+
+];
+
+
+function displayStudents() {
+
+    var output = "";
+
+    for (var i = 0;
+         i < students.length;
+         i++) {
+
+        var category;
+
+
+        if (students[i].year < 2000) {
+
+            category =
+                "Before 2000";
+
+        }
+
+        else {
+
+            category =
+                "2000 or After";
+
+        }
+
+
+        output +=
+
+            "<tr>" +
+
+            "<td>" +
+            (i + 1) +
+            "</td>" +
+
+            "<td>" +
+            students[i].name +
+            "</td>" +
+
+            "<td>" +
+            students[i].regno +
+            "</td>" +
+
+            "<td>" +
+            students[i].year +
+            "</td>" +
+
+            "<td>" +
+            category +
+            "</td>" +
+
+            "</tr>";
+
+    }
+
+
+    document.getElementById("studentTable").innerHTML =
+        output;
+
+}
+
+
+/* =====================================================
+   ORDER BUTTON
+   ===================================================== */
+
+function showOrderMessage() {
+
+    alert(
+        "Welcome to Ziv Celestial!\n\n" +
+        "Select your favourite food from today's menu."
+    );
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ziv Celestial - Advanced CSS3</title>
+
+    <style>
+
+        /* Basic Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #222;
+        }
+
+        /* Header - Multiple Backgrounds + Background Size */
+        header {
+            color: white;
+            text-align: center;
+            padding: 40px;
+            background-image: url("images/juice.jpg"), url("images/sandwich.jpg");
+            background-size: cover, 200px;
+            background-position: center, right;
+            background-repeat: no-repeat;
+        }
+
+        /* Rounded Corners */
+        .welcome {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        /* Border Image */
+        .food-section {
+            margin: 20px;
+            padding: 20px;
+            border: 15px solid transparent;
+            border-image: url("images/logo.png") 30 round;
+            background: white;
+        }
+
+        /* Food Items */
+        .food {
+            display: inline-block;
+            width: 28%;
+            margin: 1%;
+            padding: 15px;
+            text-align: center;
+            background: #f8f8f8;
+            border-radius: 10px;
+        }
+
+        .food img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: none;
+        }
+
+        /* Adjacent Sibling Selector */
+        .food h3:hover + img {
+            display: block;
+        }
+
+        /* Table */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+
+        /* nth-child Selector */
+        tr:nth-child(odd) {
+            background-color: #e8f5e9;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: #b7e4c7;
+        }
+
+        /* Form */
+        form {
+            width: 50%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        /* Form Pseudo-classes */
+        input:focus,
+        select:focus {
+            outline: 2px solid #2daa64;
+        }
+
+        input:required {
+            border-left: 4px solid #2daa64;
+        }
+
+        input:valid {
+            background-color: #e8f5e9;
+        }
+
+        input:invalid {
+            background-color: #ffecec;
+        }
+
+        button {
+            background-color: #2daa64;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+
+            .food {
+                display: block;
+                width: 90%;
+                margin: 15px auto;
+            }
+
+            form {
+                width: 80%;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Ziv Celestial</h1>
+        <p>Advanced CSS3 Food Pre-Order Interface</p>
+    </header>
+
+    <!-- Rounded Corner Section -->
+    <div class="welcome">
+
+        <h2>Welcome to Ziv Celestial</h2>
+
+        <p>
+            Order your favourite food easily and skip the waiting queue.
+            Explore our menu and choose your preferred items.
+        </p>
+
+    </div>
+
+    <!-- Border Image Section -->
+    <div class="food-section">
+
+        <h2>Popular Food Items</h2>
+
+        <div class="food">
+
+            <h3>Burger</h3>
+
+            <img src="images/burger.jpg" alt="Burger">
+
+            <p>Fresh and tasty burger.</p>
+
+        </div>
+
+        <div class="food">
+
+            <h3>Sandwich</h3>
+
+            <img src="images/sandwich.jpg" alt="Sandwich">
+
+            <p>Healthy vegetable sandwich.</p>
+
+        </div>
+
+        <div class="food">
+
+            <h3>Fresh Juice</h3>
+
+            <img src="images/juice.jpg" alt="Fresh Juice">
+
+            <p>Refreshing fruit juice.</p>
+
+        </div>
+
+    </div>
+
+    <!-- Table -->
+    <h2 style="text-align:center;">Food Menu</h2>
+
+    <table>
+
+        <tr>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+
+        <tr>
+            <td>Burger</td>
+            <td>Fast Food</td>
+            <td>₹80</td>
+        </tr>
+
+        <tr>
+            <td>Sandwich</td>
+            <td>Snacks</td>
+            <td>₹60</td>
+        </tr>
+
+        <tr>
+            <td>Fresh Juice</td>
+            <td>Beverage</td>
+            <td>₹50</td>
+        </tr>
+
+        <tr>
+            <td>Veg Roll</td>
+            <td>Snacks</td>
+            <td>₹70</td>
+        </tr>
+
+    </table>
+
+    <!-- Form -->
+    <h2 style="text-align:center;">Quick Registration</h2>
+
+    <form>
+
+        <label>Name</label>
+
+        <input type="text"
+               placeholder="Enter your name"
+               required>
+
+        <label>Email</label>
+
+        <input type="email"
+               placeholder="example@gmail.com"
+               required>
+
+        <label>Age</label>
+
+        <input type="number"
+               min="18"
+               max="60"
+               placeholder="Enter age">
+
+        <label>Favourite Food</label>
+
+        <select required>
+
+            <option value="">Select an item</option>
+            <option>Burger</option>
+            <option>Sandwich</option>
+            <option>Fresh Juice</option>
+
+        </select>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <!-- Footer -->
+    <footer>
+
+        <p>© 2026 Ziv Celestial | Food Pre-Order Platform</p>
+
+    </footer>
+
+</body>
+
+</html>
