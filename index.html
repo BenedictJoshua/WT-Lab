@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="Explore the ten Web Technology Laboratory experiments from Karunya Institute of Technology and Sciences.">
+    <title>Web Technology Laboratory | Karunya Institute of Technology and Sciences</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #17243b;
+            --muted: #64728a;
+            --brand: #2459d3;
+            --brand-dark: #1944aa;
+            --line: #e5eaf2;
+            --surface: #ffffff;
+            --background: #f5f7fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(ellipse at 85% 0%, rgba(203, 224, 255, .55), transparent 34rem),
+                var(--background);
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page-shell {
+            width: min(1120px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            padding: 28px 0 18px;
+        }
+
+        .institution {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #43536c;
+            font-size: .88rem;
+            font-weight: 650;
+            letter-spacing: .01em;
+        }
+
+        .institution-mark {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            border-radius: 11px;
+            background: #e4edff;
+            color: var(--brand);
+            font-size: .9rem;
+            font-weight: 800;
+        }
+
+        .hero {
+            padding: 58px 0 48px;
+        }
+
+        .eyebrow {
+            margin: 0 0 13px;
+            color: var(--brand);
+            font-size: .77rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 760px;
+            margin: 0;
+            font-size: clamp(2.35rem, 5vw, 4rem);
+            letter-spacing: -.055em;
+            line-height: 1.08;
+        }
+
+        .hero-copy {
+            max-width: 680px;
+            margin: 20px 0 0;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.8vw, 1.12rem);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: 1.35rem;
+            letter-spacing: -.025em;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            padding-bottom: 64px;
+        }
+
+        .experiment-card {
+            display: flex;
+            min-height: 222px;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 23px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: var(--surface);
+            box-shadow: 0 8px 26px rgba(27, 46, 79, .045);
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        }
+
+        .experiment-card:hover {
+            transform: translateY(-4px);
+            border-color: #c9d8f6;
+            box-shadow: 0 16px 34px rgba(27, 46, 79, .1);
+        }
+
+        .card-topline {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 17px;
+        }
+
+        .experiment-number {
+            display: inline-grid;
+            min-width: 42px;
+            height: 34px;
+            padding: 0 10px;
+            place-items: center;
+            border-radius: 10px;
+            background: #edf2ff;
+            color: var(--brand);
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+        }
+
+        .card-index {
+            color: #9aa6b8;
+            font-size: .78rem;
+            font-weight: 650;
+        }
+
+        .experiment-card h3 {
+            margin: 0;
+            font-size: 1.08rem;
+            letter-spacing: -.02em;
+            line-height: 1.35;
+        }
+
+        .experiment-card p {
+            margin: 9px 0 20px;
+            color: var(--muted);
+            font-size: .9rem;
+            line-height: 1.55;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: auto;
+            color: var(--brand);
+            font-size: .88rem;
+            font-weight: 750;
+            text-decoration: none;
+        }
+
+        .card-link span {
+            transition: transform .18s ease;
+        }
+
+        .card-link:hover {
+            color: var(--brand-dark);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .card-link:hover span {
+            transform: translateX(3px);
+        }
+
+        .card-link:focus-visible {
+            border-radius: 4px;
+            outline: 3px solid #9db8ff;
+            outline-offset: 4px;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: .86rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            min-height: 76px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .footer-inner p {
+            margin: 0;
+        }
+
+        @media (max-width: 850px) {
+            .experiment-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .page-shell {
+                width: min(100% - 32px, 430px);
+            }
+
+            .site-header {
+                padding-top: 20px;
+            }
+
+            .institution {
+                align-items: flex-start;
+                font-size: .78rem;
+            }
+
+            .institution-mark {
+                flex: 0 0 34px;
+            }
+
+            .hero {
+                padding: 46px 0 36px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .experiment-grid {
+                grid-template-columns: 1fr;
+                gap: 13px;
+                padding-bottom: 44px;
+            }
+
+            .experiment-card {
+                min-height: 0;
+                padding: 20px;
+            }
+
+            .footer-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                gap: 3px;
+                padding: 18px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header page-shell">
+        <div class="institution">
+            <span class="institution-mark" aria-hidden="true">K</span>
+            <span>Karunya Institute of Technology and Sciences</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero page-shell" aria-labelledby="page-title">
+            <p class="eyebrow">Web Technology Lab</p>
+            <h1 id="page-title">Web Technology Laboratory</h1>
+            <p class="hero-copy">
+                Explore a collection of 10 hands-on experiments covering the foundations
+                of modern web development, from HTML and CSS to interactive JavaScript,
+                AngularJS, and server-side form handling.
+            </p>
+        </section>
+
+        <section class="page-shell" aria-labelledby="experiments-heading">
+            <div class="section-heading">
+                <h2 id="experiments-heading">Explore the experiments</h2>
+                <p>Choose an experiment to get started.</p>
+            </div>
+
+            <div class="experiment-grid">
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">01</span><span class="card-index">01 / 10</span></div>
+                    <h3>Food Pre-Order Platform</h3>
+                    <p>Build a structured food pre-order page with sections, images, menus, and contact links.</p>
+                    <a class="card-link" href="exp1.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">02</span><span class="card-index">02 / 10</span></div>
+                    <h3>Customer Registration</h3>
+                    <p>Explore HTML form controls for collecting customer details and preferences.</p>
+                    <a class="card-link" href="exp2.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">03</span><span class="card-index">03 / 10</span></div>
+                    <h3>Responsive Homepage</h3>
+                    <p>Create a responsive food homepage with a navigation bar, sidebar, and item cards.</p>
+                    <a class="card-link" href="exp3.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">04</span><span class="card-index">04 / 10</span></div>
+                    <h3>Advanced CSS3</h3>
+                    <p>Practice CSS backgrounds, borders, selectors, pseudo-classes, and responsive styling.</p>
+                    <a class="card-link" href="exp4.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">05</span><span class="card-index">05 / 10</span></div>
+                    <h3>JavaScript Applications</h3>
+                    <p>Try JavaScript DOM interactions, calculators, a fruit farm, and other small applications.</p>
+                    <a class="card-link" href="exp5.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">06</span><span class="card-index">06 / 10</span></div>
+                    <h3>Campus Food Experience</h3>
+                    <p>Explore an interactive campus food page with offers, a live clock, and visual effects.</p>
+                    <a class="card-link" href="exp6.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">07</span><span class="card-index">07 / 10</span></div>
+                    <h3>Working with jQuery</h3>
+                    <p>Use jQuery events and DOM updates for calculators and a custom delivery-bike preview.</p>
+                    <a class="card-link" href="exp7.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">08</span><span class="card-index">08 / 10</span></div>
+                    <h3>AngularJS Directives</h3>
+                    <p>Practice AngularJS data binding, expressions, repeat directives, and interactive lists.</p>
+                    <a class="card-link" href="exp8.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">09</span><span class="card-index">09 / 10</span></div>
+                    <h3>Validation &amp; Routing</h3>
+                    <p>Explore AngularJS form validation and route-based views with ngRoute.</p>
+                    <a class="card-link" href="exp9.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+                <article class="experiment-card">
+                    <div class="card-topline"><span class="experiment-number">10</span><span class="card-index">10 / 10</span></div>
+                    <h3>Node.js &amp; MongoDB</h3>
+                    <p>Submit registration details to a Node.js service and view records stored in MongoDB.</p>
+                    <a class="card-link" href="exp10.html">Open experiment <span aria-hidden="true">→</span></a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="page-shell footer-inner">
+            <p>Web Technology Lab Project</p>
+            <p>Karunya Institute of Technology and Sciences</p>
+        </div>
+    </footer>
+</body>
+</html>
