@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ziv Celestial - Campus Food</title>
 
     <style>
@@ -61,6 +63,53 @@
 
         nav a:hover {
             color: #0d422a;
+        }
+
+        .experiment-navigation{
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            gap:10px;
+            padding:10px clamp(16px,5vw,7%);
+            background:#e8eee8;
+            box-shadow:none;
+        }
+
+        .experiment-navigation a,
+        .experiment-navigation select{
+            min-height:40px;
+            border:1px solid #c8d7ca;
+            border-radius:8px;
+            font:600 14px Arial,sans-serif;
+        }
+
+        .experiment-navigation a{
+            display:inline-flex;
+            align-items:center;
+            margin:0;
+            padding:0 15px;
+            background:#236b45;
+            color:white;
+            text-decoration:none;
+        }
+
+        .experiment-navigation select{
+            width:auto;
+            max-width:calc(100vw - 130px);
+            padding:0 10px;
+            background:white;
+            color:#26332b;
+        }
+
+        .experiment-navigation a:hover{
+            background:#174b31;
+        }
+
+        .experiment-navigation a:focus-visible,
+        .experiment-navigation select:focus-visible,
+        button:focus-visible{
+            outline:3px solid #9bbf9f;
+            outline-offset:3px;
         }
 
         /* HERO */
@@ -160,19 +209,27 @@
 
         /* MOVING BANNER */
         .banner {
+            display: flex;
+            min-height: 120px;
+            height: auto;
+            flex-wrap: wrap;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
             max-width: 1100px;
             margin: 40px auto;
             background: #176b45;
-            height: 120px;
             border-radius: 15px;
             overflow: hidden;
             position: relative;
+            padding: 10px 12px 10px 88px;
         }
 
         .banner-text {
+            flex-basis: 100%;
             color: white;
             text-align: center;
-            padding-top: 20px;
+            padding: 4px 0 8px;
             font-size: 20px;
             font-weight: bold;
         }
@@ -190,7 +247,7 @@
         .banner button {
             position: relative;
             z-index: 2;
-            margin-left: 48%;
+            margin: 3px;
             padding: 7px 14px;
             border: none;
             border-radius: 5px;
@@ -203,6 +260,7 @@
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 3px 12px #ddd;
+            overflow-x: auto;
         }
 
         table {
@@ -287,12 +345,160 @@
                 font-size: 12px;
             }
         }
+
+        body {
+            background: #f7f3ea;
+            color: #252a28;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #172b25;
+            padding: 21px clamp(20px, 7vw, 92px);
+        }
+
+        .logo {
+            font-size: clamp(24px, 4vw, 30px);
+            letter-spacing: -.035em;
+        }
+
+        .tagline {
+            color: #d3ded5;
+        }
+
+        #clock {
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 9px;
+            background: rgba(255, 255, 255, .1);
+            font-variant-numeric: tabular-nums;
+        }
+
+        body > nav:not(.experiment-navigation) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 25px;
+            padding: 15px clamp(20px, 7vw, 92px);
+            background: #fffdf8;
+            box-shadow: 0 2px 12px rgba(23, 43, 37, .06);
+        }
+
+        body > nav:not(.experiment-navigation) a {
+            margin: 0;
+            color: #245b45;
+        }
+
+        .hero,
+        .food-card,
+        .student-box,
+        .status {
+            border: 1px solid #e4dfd4;
+            background: #fffdf8;
+            box-shadow: 0 10px 28px rgba(23, 43, 37, .07);
+        }
+
+        .hero {
+            margin-top: 30px;
+            padding: clamp(25px, 4vw, 44px);
+            border-radius: 16px;
+        }
+
+        .hero h1 {
+            color: #172b25;
+            letter-spacing: -.04em;
+        }
+
+        .hero p,
+        .food-card p {
+            color: #686e68;
+        }
+
+        .order-btn,
+        .student-btn {
+            background: #245b45;
+            font-weight: 700;
+        }
+
+        .order-btn:hover,
+        .student-btn:hover {
+            background: #193f31;
+        }
+
+        #welcomeMessage {
+            width: min(1100px, calc(100% - 36px));
+            border-left-color: #c87954;
+            background: #f1e8d9;
+            color: #34443b;
+        }
+
+        .section h2 {
+            color: #172b25;
+            letter-spacing: -.025em;
+        }
+
+        .food-card {
+            padding: 13px;
+            border-radius: 14px;
+        }
+
+        .food-card img {
+            height: 190px;
+            border-radius: 10px;
+        }
+
+        .food-card h3 {
+            color: #172b25;
+        }
+
+        .price {
+            color: #245b45;
+        }
+
+        .banner {
+            background: #245b45;
+        }
+
+        .banner button {
+            background: #fffdf8;
+            color: #193f31;
+            font-weight: 700;
+        }
+
+        .banner button:hover {
+            background: #e9eee4;
+        }
+
+        .student-box {
+            border-radius: 14px;
+        }
+
+        th {
+            background: #245b45;
+        }
+
+        tr:nth-child(even) {
+            background: #f4f0e7;
+        }
+
+        .student-btn {
+            border-radius: 7px;
+        }
+
+        #colourStatus {
+            color: #245b45;
+        }
+
+        footer {
+            background: #172b25;
+        }
+
     </style>
+    <link rel="stylesheet" href="ziv-theme.css">
 </head>
 
 <body>
-    <div style="position:fixed;top:12px;right:12px;z-index:1000;">
-        <select aria-label="Current page: Experiment 6. Select an experiment to navigate." onchange="window.location.href=this.value" style="width:auto;max-width:calc(100vw - 24px);padding:9px 12px;border:1px solid #d5d0ca;border-radius:8px;background:#fff;color:#292522;font:14px Arial,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer;">
+    <nav class="experiment-navigation" aria-label="Experiment navigation">
+        <a href="index.html">Home</a>
+        <select aria-label="Current page: Experiment 6. Select an experiment to navigate." onchange="window.location.href=this.value">
             <option value="exp1.html">Experiment 1</option>
             <option value="exp2.html">Experiment 2</option>
             <option value="exp3.html">Experiment 3</option>
@@ -304,7 +510,7 @@
             <option value="exp9.html">Experiment 9</option>
             <option value="exp10.html">Experiment 10</option>
         </select>
-    </div>
+    </nav>
 
 <!-- HEADER -->
 <header>

@@ -10,6 +10,10 @@
     <style>
 
         /* Basic Page Styling */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -48,23 +52,26 @@
         /* Food Items */
         .food {
             display: inline-block;
-            width: 28%;
-            margin: 1%;
+            width: calc(33.333% - 18px);
+            margin: 8px;
             padding: 15px;
             text-align: center;
             background: #f8f8f8;
             border-radius: 10px;
+            vertical-align: top;
         }
 
         .food img {
             width: 100%;
             height: 150px;
             object-fit: cover;
+            max-width: 100%;
             display: none;
         }
 
         /* Adjacent Sibling Selector */
-        .food h3:hover + img {
+        .food h3:hover + img,
+        .food h3:focus + img {
             display: block;
         }
 
@@ -73,6 +80,11 @@
             width: 90%;
             margin: 20px auto;
             border-collapse: collapse;
+        }
+
+        .table-container {
+            max-width: 100%;
+            overflow-x: auto;
         }
 
         th,
@@ -136,6 +148,11 @@
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #174b31;
         }
 
         footer {
@@ -151,22 +168,232 @@
 
             .food {
                 display: block;
-                width: 90%;
+                width: 100%;
                 margin: 15px auto;
             }
 
             form {
-                width: 80%;
+                width: min(100% - 32px, 600px);
+            }
+
+            table {
+                width: 100%;
             }
         }
 
+        @media (hover: none) {
+            .food img {
+                display: block;
+            }
+        }
+
+        .experiment-navigation{
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            gap:10px;
+            padding:10px clamp(16px,5vw,7%);
+            background:#e8eee8;
+        }
+
+        .experiment-navigation a,
+        .experiment-navigation select{
+            min-height:40px;
+            border:1px solid #c8d7ca;
+            border-radius:8px;
+            font:600 14px Arial,sans-serif;
+        }
+
+        .experiment-navigation a{
+            display:inline-flex;
+            align-items:center;
+            padding:0 15px;
+            background:#236b45;
+            color:white;
+            text-decoration:none;
+        }
+
+        .experiment-navigation select{
+            width:auto;
+            max-width:calc(100vw - 130px);
+            padding:0 10px;
+            background:white;
+            color:#26332b;
+        }
+
+        .experiment-navigation a:hover{
+            background:#174b31;
+        }
+
+        .experiment-navigation a:focus-visible,
+        .experiment-navigation select:focus-visible{
+            outline:3px solid #9bbf9f;
+            outline-offset:3px;
+        }
+
+        body {
+            background: #f7f3ea;
+            color: #252a28;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 48px 20px;
+            background-image:
+                linear-gradient(rgba(23, 43, 37, .68), rgba(23, 43, 37, .68)),
+                url("images/juice.jpg"),
+                url("images/sandwich.jpg");
+            background-size: cover, cover, 200px;
+            background-position: center, center, right;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, .28);
+        }
+
+        header h1 {
+            margin: 0 0 6px;
+            font-size: clamp(2rem, 5vw, 3rem);
+            letter-spacing: -.04em;
+        }
+
+        header p {
+            margin: 0;
+            color: #e4eee5;
+        }
+
+        .welcome,
+        .food-section {
+            width: min(1120px, calc(100% - 40px));
+            margin: 22px auto;
+            border-radius: 14px;
+            box-shadow: 0 10px 28px rgba(23, 43, 37, .07);
+        }
+
+        .welcome h2,
+        .food-section h2 {
+            color: #245b45;
+            letter-spacing: -.025em;
+        }
+
+        .food-section {
+            border-width: 10px;
+            background-color: #fffdf8;
+        }
+
+        .food {
+            background: #f4f0e7;
+            color: #34443b;
+        }
+
+        .food h3 {
+            color: #172b25;
+        }
+
+        .food img {
+            border-radius: 8px;
+        }
+
+        .table-container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+            border: 1px solid #e4dfd4;
+            border-radius: 12px;
+            background: #fffdf8;
+            box-shadow: 0 10px 28px rgba(23, 43, 37, .06);
+        }
+
+        .table-container table {
+            width: 100%;
+            margin: 0;
+        }
+
+        th,
+        td {
+            border-color: #e4dfd4;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fffdf8;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f4f0e7;
+        }
+
+        tr:hover {
+            background-color: #e9eee4;
+        }
+
+        form {
+            width: min(560px, calc(100% - 40px));
+            margin: 22px auto;
+            border: 1px solid #e4dfd4;
+            border-radius: 14px;
+            background: #fffdf8;
+            box-shadow: 0 10px 28px rgba(23, 43, 37, .07);
+        }
+
+        input,
+        select {
+            border: 1px solid #d5d0c5;
+            border-radius: 7px;
+        }
+
+        input:focus,
+        select:focus {
+            outline-color: #245b45;
+        }
+
+        input:required {
+            border-left-color: #245b45;
+        }
+
+        input:valid {
+            background-color: #eff4eb;
+        }
+
+        input:invalid {
+            background-color: #fff4ed;
+        }
+
+        button {
+            background-color: #245b45;
+            font-weight: 700;
+        }
+
+        button:hover {
+            background-color: #193f31;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #172b25;
+            color: #e7ece5;
+        }
+
+        @media (max-width: 768px) {
+            .welcome,
+            .food-section,
+            .table-container {
+                width: calc(100% - 28px);
+            }
+
+            .food-section {
+                padding: 16px;
+            }
+
+            form {
+                width: calc(100% - 28px);
+            }
+        }
     </style>
+    <link rel="stylesheet" href="ziv-theme.css">
 
 </head>
 
 <body>
-    <div style="position:fixed;top:12px;right:12px;z-index:1000;">
-        <select aria-label="Current page: Experiment 4. Select an experiment to navigate." onchange="window.location.href=this.value" style="width:auto;max-width:calc(100vw - 24px);padding:9px 12px;border:1px solid #d5d0ca;border-radius:8px;background:#fff;color:#292522;font:14px Arial,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer;">
+    <nav class="experiment-navigation" aria-label="Experiment navigation">
+        <a href="index.html">Home</a>
+        <select aria-label="Current page: Experiment 4. Select an experiment to navigate." onchange="window.location.href=this.value">
             <option value="exp1.html">Experiment 1</option>
             <option value="exp2.html">Experiment 2</option>
             <option value="exp3.html">Experiment 3</option>
@@ -178,7 +405,7 @@
             <option value="exp9.html">Experiment 9</option>
             <option value="exp10.html">Experiment 10</option>
         </select>
-    </div>
+    </nav>
 
     <!-- Header -->
     <header>
@@ -205,7 +432,7 @@
 
         <div class="food">
 
-            <h3>Burger</h3>
+            <h3 tabindex="0">Burger</h3>
 
             <img src="images/burger.jpg" alt="Burger">
 
@@ -215,7 +442,7 @@
 
         <div class="food">
 
-            <h3>Sandwich</h3>
+            <h3 tabindex="0">Sandwich</h3>
 
             <img src="images/sandwich.jpg" alt="Sandwich">
 
@@ -225,7 +452,7 @@
 
         <div class="food">
 
-            <h3>Fresh Juice</h3>
+            <h3 tabindex="0">Fresh Juice</h3>
 
             <img src="images/juice.jpg" alt="Fresh Juice">
 
@@ -238,6 +465,7 @@
     <!-- Table -->
     <h2 style="text-align:center;">Food Menu</h2>
 
+    <div class="table-container">
     <table>
 
         <tr>
@@ -271,34 +499,38 @@
         </tr>
 
     </table>
+    </div>
 
     <!-- Form -->
     <h2 style="text-align:center;">Quick Registration</h2>
 
     <form>
 
-        <label>Name</label>
+        <label for="quick-name">Name</label>
 
         <input type="text"
+               id="quick-name"
                placeholder="Enter your name"
                required>
 
-        <label>Email</label>
+        <label for="quick-email">Email</label>
 
         <input type="email"
+               id="quick-email"
                placeholder="example@gmail.com"
                required>
 
-        <label>Age</label>
+        <label for="quick-age">Age</label>
 
         <input type="number"
+               id="quick-age"
                min="18"
                max="60"
                placeholder="Enter age">
 
-        <label>Favourite Food</label>
+        <label for="favourite-food">Favourite Food</label>
 
-        <select required>
+        <select id="favourite-food" required>
 
             <option value="">Select an item</option>
             <option>Burger</option>

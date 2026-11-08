@@ -1,130 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ziv Celestial | Responsive Homepage</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore fresh campus favourites and convenient pre-ordering with Ziv Celestial.">
+    <title>Experiment 3 | Responsive Webpage Design Using HTML5 &amp; CSS3</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
+            min-width: 320px;
+            margin: 0;
+            background: #f7f3ea;
+            color: #252a28;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
         }
 
-        header {
-            background: #2daa64;
-            color: white;
-            text-align: center;
-            padding: 20px;
+        img {
+            display: block;
+            max-width: 100%;
         }
 
-        nav {
-            background: #222;
-            padding: 15px;
+        a {
+            color: inherit;
         }
 
-        nav ul {
+        .site-header {
             display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 30px;
+            width: min(1200px, calc(100% - 48px));
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 0 auto;
+            padding: 18px 0;
         }
 
-        nav a {
-            color: white;
+        .brand {
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .brand img {
+            width: 70px;
+            height: 58px;
+            border-radius: 8px;
+            background: #fffdf8;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            margin: 0;
+            color: #172b25;
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -.035em;
+            line-height: 1.25;
+        }
+
+        .brand-tagline {
+            margin: 2px 0 0;
+            color: #777b75;
+            font-size: .83rem;
+        }
+
+        .pickup-note {
+            color: #245b45;
+            font-size: .88rem;
+            font-weight: 700;
+        }
+
+        .section-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 13px 20px;
+            border-top: 1px solid #e4dfd4;
+            border-bottom: 1px solid #e4dfd4;
+            background: #fffdf8;
+        }
+
+        .section-navigation a {
+            color: #34443b;
+            font-size: .91rem;
+            font-weight: 700;
             text-decoration: none;
         }
 
-        .container {
+        .section-navigation a:hover {
+            color: #c87954;
+        }
+
+        .hero {
+            display: grid;
+            width: min(1200px, calc(100% - 48px));
+            grid-template-columns: minmax(0, 1fr) minmax(300px, .92fr);
+            align-items: center;
+            gap: clamp(24px, 5vw, 58px);
+            margin: 28px auto;
+            padding: clamp(26px, 5vw, 58px);
+            overflow: hidden;
+            border-radius: 20px;
+            background: #172b25;
+            color: #fffdf8;
+            box-shadow: 0 18px 44px rgba(23, 43, 37, .16);
+        }
+
+        .hero-copy {
+            max-width: 580px;
+        }
+
+        .eyebrow {
+            margin: 0 0 12px;
+            color: #c9d6c7;
+            font-size: .76rem;
+            font-weight: 800;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.35rem, 5vw, 4.2rem);
+            letter-spacing: -.055em;
+            line-height: 1.04;
+        }
+
+        .hero-copy > p:not(.eyebrow) {
+            max-width: 510px;
+            margin: 18px 0 24px;
+            color: #d7dfd7;
+            font-size: 1.02rem;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            min-height: 46px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 19px;
+            border-radius: 7px;
+            background: #c87954;
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 750;
+            text-decoration: none;
+        }
+
+        .hero-cta:hover {
+            background: #b66643;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: clamp(250px, 31vw, 370px);
+            border-radius: 14px;
+            object-fit: cover;
+        }
+
+        .page-layout {
             display: flex;
-            gap: 20px;
-            padding: 20px;
+            width: min(1200px, calc(100% - 48px));
+            align-items: flex-start;
+            gap: 22px;
+            margin: 0 auto 36px;
+        }
+
+        .sidebar,
+        .content {
+            border: 1px solid #e4dfd4;
+            border-radius: 15px;
+            background: #fffdf8;
+            box-shadow: 0 10px 28px rgba(23, 43, 37, .06);
         }
 
         .sidebar {
-            width: 25%;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
+            flex: 0 0 245px;
+            padding: 22px;
+        }
+
+        .sidebar h2,
+        .content h2 {
+            margin: 0;
+            color: #172b25;
+            font-size: 1.28rem;
+            letter-spacing: -.025em;
+        }
+
+        .sidebar p,
+        .content-intro {
+            margin: 7px 0 15px;
+            color: #777b75;
+            font-size: .9rem;
+        }
+
+        .category-list {
+            display: grid;
+            gap: 7px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .category-list a {
+            display: block;
+            padding: 9px 11px;
+            border-radius: 7px;
+            background: #f3efe6;
+            color: #34443b;
+            font-weight: 650;
+            text-decoration: none;
+        }
+
+        .category-list a:hover {
+            background: #e7eddf;
+            color: #193f31;
         }
 
         .content {
-            width: 75%;
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 23px;
         }
 
-        .cards {
+        .content-intro {
+            margin-bottom: 19px;
+        }
+
+        .food-cards {
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        .card {
-            flex: 1;
-            background: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px;
+        .food-card {
+            display: flex;
+            min-width: 0;
+            flex: 1 1 calc(33.333% - 11px);
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e4dfd4;
+            border-radius: 12px;
+            background: #fff;
         }
 
-        .card img {
+        .food-card img {
             width: 100%;
-            height: 180px;
+            height: 170px;
             object-fit: cover;
-            border-radius: 8px;
         }
 
-        .card button {
-            background: #2daa64;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            margin-top: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
+        .food-card-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
             padding: 15px;
-            margin-top: 20px;
         }
 
-        @media screen and (max-width:768px) {
+        .food-card h3 {
+            margin: 0;
+            color: #172b25;
+            font-size: 1.08rem;
+        }
 
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
+        .food-card p {
+            flex: 1;
+            margin: 6px 0 16px;
+            color: #777b75;
+            font-size: .88rem;
+        }
+
+        .food-card a {
+            display: inline-flex;
+            min-height: 39px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 13px;
+            border-radius: 6px;
+            background: #245b45;
+            color: #fffdf8;
+            font-size: .85rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .food-card a:hover {
+            background: #193f31;
+        }
+
+        .site-footer {
+            padding: 22px 18px;
+            background: #172b25;
+            color: #e7ece5;
+            text-align: center;
+            font-size: .87rem;
+        }
+
+        .site-footer p {
+            margin: 2px 0;
+        }
+
+        @media (min-width: 1200px) {
+            .hero,
+            .page-layout,
+            .site-header {
+                width: min(1200px, calc(100% - 64px));
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .hero,
+            .page-layout,
+            .site-header {
+                width: calc(100% - 48px);
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .hero,
+            .page-layout,
+            .site-header {
+                width: calc(100% - 40px);
             }
 
-            .container {
+            .hero {
+                grid-template-columns: minmax(0, 1fr) minmax(240px, .8fr);
+            }
+
+            .page-layout {
                 flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                flex-basis: auto;
+            }
+
+            .category-list {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            .food-card {
+                flex-basis: calc(50% - 8px);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .site-header {
+                width: calc(100% - 32px);
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .pickup-note {
+                padding-left: 83px;
+            }
+
+            .section-navigation {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 0;
+                padding: 6px 16px;
+            }
+
+            .section-navigation a {
+                padding: 7px;
+                text-align: center;
+            }
+
+            .hero,
+            .page-layout {
+                width: calc(100% - 28px);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                margin-top: 18px;
+                padding: 25px;
+            }
+
+            .hero-image {
+                height: 220px;
+            }
+
+            .page-layout {
+                flex-direction: column;
+                gap: 14px;
             }
 
             .sidebar,
             .content {
                 width: 100%;
+                flex-basis: auto;
+                padding: 18px;
             }
 
-            .cards {
+            .category-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .food-cards {
                 flex-direction: column;
+            }
+
+            .food-card {
+                flex-basis: auto;
+            }
+
+            .food-card img {
+                height: 210px;
+            }
+
+            .food-card a {
+                width: 100%;
             }
         }
     </style>
-
+    <link rel="stylesheet" href="ziv-theme.css">
 </head>
-
 <body>
-    <div style="position:fixed;top:12px;right:12px;z-index:1000;">
-        <select aria-label="Current page: Experiment 3. Select an experiment to navigate." onchange="window.location.href=this.value" style="width:auto;max-width:calc(100vw - 24px);padding:9px 12px;border:1px solid #d5d0ca;border-radius:8px;background:#fff;color:#292522;font:14px Arial,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer;">
+    <nav class="experiment-navigation" aria-label="Experiment navigation">
+        <a href="index.html">Home</a>
+        <label for="experiment-page" hidden>Select an experiment</label>
+        <select id="experiment-page" aria-label="Current page: Experiment 3. Select an experiment to navigate." onchange="window.location.href=this.value">
             <option value="exp1.html">Experiment 1</option>
             <option value="exp2.html">Experiment 2</option>
             <option value="exp3.html" selected>Experiment 3</option>
@@ -136,109 +442,85 @@
             <option value="exp9.html">Experiment 9</option>
             <option value="exp10.html">Experiment 10</option>
         </select>
-    </div>
-
-    <header>
-        <h1>Ziv Celestial</h1>
-        <p>Responsive Food Pre-Order Website</p>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Pre-Order</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
     </nav>
 
-    <div class="container">
-
-        <aside class="sidebar">
-
-            <h3>Food Categories</h3>
-
-            <ul>
-                <li>Breakfast</li>
-                <li>Lunch</li>
-                <li>Snacks</li>
-                <li>Beverages</li>
-            </ul>
-            
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-  
-<div class="container">
-  <h1>My First Bootstrap Page</h1>
-  <p>This part is inside a .container class.</p>
-  <p>The .container class provides a responsive fixed width container.</p>
-  <p>Resize the browser window to see that the container width will change at different breakpoints.</p>
-</div>
-
-</body>
-</html>
-
-        </aside>
-
-        <main class="content">
-
-            <h2>Popular Food Items</h2>
-
-            <br>
-
-            <div class="cards">
-
-                <div class="card">
-
-                    <img src="images/burger.jpg" alt="Burger">
-
-                    <h3>Burger</h3>
-
-                    <p>Fresh grilled burger served with crispy fries.</p>
-
-                    <button>Pre-Order</button>
-
-                </div>
-
-                <div class="card">
-
-                    <img src="images/sandwich.jpg" alt="Sandwich">
-
-                    <h3>Sandwich</h3>
-
-                    <p>Healthy vegetable sandwich with fresh ingredients.</p>
-
-                    <button>Pre-Order</button>
-
-                </div>
-
-                <div class="card">
-
-                    <img src="images/juice.jpg" alt="Juice">
-
-                    <h3>Fresh Juice</h3>
-
-                    <p>Refreshing seasonal fruit juice prepared fresh.</p>
-
-                    <button>Pre-Order</button>
-
-                </div>
-
+    <header class="site-header">
+        <div class="brand">
+            <img src="images/logo.png" alt="Ziv Celestial logo">
+            <div>
+                <p class="brand-name">Ziv Celestial</p>
+                <p class="brand-tagline">Food pre-ordering, made convenient</p>
             </div>
+        </div>
+        <span class="pickup-note">Campus pickup · Made fresh</span>
+    </header>
 
-        </main>
+    <nav class="section-navigation" aria-label="Page sections">
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#about">About</a>
+    </nav>
 
-    </div>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <p class="eyebrow">Good food, closer to campus</p>
+                <h1>Good food.<br>A little less waiting.</h1>
+                <p>Find a fresh favourite, pre-order before your break and pick it up when it suits you.</p>
+                <a class="hero-cta" href="#menu">Explore the menu</a>
+            </div>
+            <img class="hero-image" src="images/sandwich.jpg" alt="Freshly prepared sandwich ready for a campus break">
+        </section>
 
-    <footer>
+        <div class="page-layout">
+            <aside class="sidebar" id="categories" aria-labelledby="categories-heading">
+                <h2 id="categories-heading">Browse by category</h2>
+                <p>Something for every part of your day.</p>
+                <ul class="category-list">
+                    <li><a href="#menu">Breakfast</a></li>
+                    <li><a href="#menu">Lunch</a></li>
+                    <li><a href="#menu">Snacks</a></li>
+                    <li><a href="#menu">Beverages</a></li>
+                </ul>
+            </aside>
 
-        <p>© 2026 Ziv Celestial | Food Pre-Order Platform</p>
+            <section class="content" id="menu" aria-labelledby="menu-heading">
+                <h2 id="menu-heading">Popular food items</h2>
+                <p class="content-intro">Fresh choices for your next campus break.</p>
+                <div class="food-cards">
+                    <article class="food-card">
+                        <img src="images/burger.jpg" alt="Ziv Celestial burger with fresh toppings">
+                        <div class="food-card-body">
+                            <h3>Burger</h3>
+                            <p>A satisfying classic served with crisp, fresh toppings.</p>
+                            <a href="#menu">Explore item</a>
+                        </div>
+                    </article>
+                    <article class="food-card">
+                        <img src="images/sandwich.jpg" alt="Fresh vegetable sandwich">
+                        <div class="food-card-body">
+                            <h3>Sandwich</h3>
+                            <p>A freshly prepared sandwich for a quick campus meal.</p>
+                            <a href="#menu">Explore item</a>
+                        </div>
+                    </article>
+                    <article class="food-card">
+                        <img src="images/juice.jpg" alt="Fresh fruit juice">
+                        <div class="food-card-body">
+                            <h3>Fresh juice</h3>
+                            <p>A refreshing fruit drink for a bright afternoon.</p>
+                            <a href="#menu">Explore item</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
 
+    <footer class="site-footer" id="about">
+        <p><strong>Ziv Celestial</strong> · Good food, made convenient</p>
+        <p>Web Technology Laboratory · Karunya Institute of Technology and Sciences</p>
     </footer>
-
 </body>
-
 </html>

@@ -7,6 +7,10 @@
     <title>Ziv Celestial | Customer Registration</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: #f4f4f4;
@@ -103,13 +107,147 @@
             padding: 15px;
             margin-top: 20px;
         }
+
+        .experiment-navigation{
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            gap:10px;
+            padding:10px clamp(16px,5vw,7%);
+            background:#e8eee8;
+        }
+
+        .experiment-navigation a,
+        .experiment-navigation select{
+            min-height:40px;
+            border:1px solid #c8d7ca;
+            border-radius:8px;
+            font:600 14px Arial,sans-serif;
+        }
+
+        .experiment-navigation a{
+            display:inline-flex;
+            align-items:center;
+            padding:0 15px;
+            background:#236b45;
+            color:white;
+            text-decoration:none;
+        }
+
+        .experiment-navigation select{
+            width:auto;
+            max-width:calc(100vw - 130px);
+            padding:0 10px;
+            background:white;
+            color:#26332b;
+        }
+
+        .experiment-navigation a:hover{
+            background:#174b31;
+        }
+
+        .experiment-navigation a:focus-visible,
+        .experiment-navigation select:focus-visible{
+            outline:3px solid #9bbf9f;
+            outline-offset:3px;
+        }
+
+        @media(max-width:600px){
+            .container{
+                width:calc(100% - 32px);
+                padding:20px;
+            }
+
+            header h1{
+                font-size:clamp(30px,9vw,42px);
+            }
+        }
+
+        body {
+            background: #f7f3ea;
+            color: #252a28;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 38px 20px;
+            border-radius: 0;
+        }
+
+        header img {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+        }
+
+        header h1 {
+            letter-spacing: -.04em;
+        }
+
+        .container {
+            width: min(680px, calc(100% - 36px));
+            margin: 28px auto;
+            padding: clamp(22px, 4vw, 38px);
+            border: 1px solid #e4dfd4;
+            border-radius: 16px;
+            background: #fffdf8;
+            box-shadow: 0 14px 36px rgba(23, 43, 37, .08);
+        }
+
+        h2 {
+            color: #245b45;
+            letter-spacing: -.025em;
+        }
+
+        form > label {
+            display: block;
+            margin: 14px 0 5px;
+            color: #34443b;
+        }
+
+        input:not([type="radio"]):not([type="checkbox"]):not([type="color"]):not([type="range"]):not([type="file"]),
+        select,
+        textarea {
+            border: 1px solid #d5d0c5;
+            border-radius: 8px;
+            background: #fff;
+            color: #252a28;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            accent-color: #245b45;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            min-width: 118px;
+            border-radius: 7px;
+            background: #245b45;
+            font-weight: 700;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background: #193f31;
+        }
+
+        footer {
+            background: #172b25;
+            color: #e7ece5;
+        }
     </style>
+    <link rel="stylesheet" href="ziv-theme.css">
 
 </head>
 
 <body>
-    <div style="position:fixed;top:12px;right:12px;z-index:1000;">
-        <select aria-label="Current page: Experiment 2. Select an experiment to navigate." onchange="window.location.href=this.value" style="width:auto;max-width:calc(100vw - 24px);padding:9px 12px;border:1px solid #d5d0ca;border-radius:8px;background:#fff;color:#292522;font:14px Arial,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer;">
+    <nav class="experiment-navigation" aria-label="Experiment navigation">
+        <a href="index.html">Home</a>
+        <select aria-label="Current page: Experiment 2. Select an experiment to navigate." onchange="window.location.href=this.value">
             <option value="exp1.html">Experiment 1</option>
             <option value="exp2.html" selected>Experiment 2</option>
             <option value="exp3.html">Experiment 3</option>
@@ -121,7 +259,7 @@
             <option value="exp9.html">Experiment 9</option>
             <option value="exp10.html">Experiment 10</option>
         </select>
-    </div>
+    </nav>
 
    <header>
     <img src="images/logo.png" alt="Ziv Celestial Logo">
@@ -135,40 +273,40 @@
 
         <form>
 
-            <label>Customer Name</label>
-            <input type="text" placeholder="Enter your name" required>
+            <label for="customer-name">Customer Name</label>
+            <input id="customer-name" name="customerName" type="text" placeholder="Enter your name" required>
 
-            <label>Email Address</label>
-            <input type="email" placeholder="example@gmail.com" required>
+            <label for="customer-email">Email Address</label>
+            <input id="customer-email" name="email" type="email" placeholder="example@gmail.com" required>
 
-            <label>Password</label>
-            <input type="password" required>
+            <label for="customer-password">Password</label>
+            <input id="customer-password" name="password" type="password" required>
 
-            <label>Mobile Number</label>
-            <input type="number" min="6000000000" max="9999999999" required>
+            <label for="customer-mobile">Mobile Number</label>
+            <input id="customer-mobile" name="mobile" type="number" min="6000000000" max="9999999999" required>
 
-            <label>Date of Birth</label>
-            <input type="date">
+            <label for="customer-dob">Date of Birth</label>
+            <input id="customer-dob" name="dateOfBirth" type="date">
 
             <label>Gender</label><br>
 
-            <input type="radio" name="gender"> Male
-            <input type="radio" name="gender"> Female
-            <input type="radio" name="gender"> Other
+            <label><input type="radio" name="gender" value="Male"> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+            <label><input type="radio" name="gender" value="Other"> Other</label>
 
             <br><br>
 
             <label>Food Preference</label><br>
 
-            <input type="checkbox"> Vegetarian
-            <input type="checkbox"> Non-Vegetarian
-            <input type="checkbox"> Vegan
+            <label><input type="checkbox" name="foodPreference" value="Vegetarian"> Vegetarian</label>
+            <label><input type="checkbox" name="foodPreference" value="Non-Vegetarian"> Non-Vegetarian</label>
+            <label><input type="checkbox" name="foodPreference" value="Vegan"> Vegan</label>
 
             <br><br>
 
-            <label>Preferred Meal</label>
+            <label for="preferred-meal">Preferred Meal</label>
 
-            <select>
+            <select id="preferred-meal" name="preferredMeal">
 
                 <option>Breakfast</option>
                 <option>Lunch</option>
@@ -179,23 +317,23 @@
 
             <label>Delivery Address</label>
 
-            <textarea rows="4" placeholder="Enter your address"></textarea>
+            <textarea id="delivery-address" name="address" rows="4" placeholder="Enter your address"></textarea>
 
-            <label>Favourite Theme Color</label><br>
+            <label for="theme-color">Favourite Theme Color</label><br>
 
-            <input type="color">
-
-            <br><br>
-
-            <label>Upload Profile Picture</label><br>
-
-            <input type="file">
+            <input id="theme-color" type="color">
 
             <br><br>
 
-            <label>Ordering Experience</label><br>
+            <label for="profile-picture">Upload Profile Picture</label><br>
 
-            <input type="range" min="1" max="10">
+            <input id="profile-picture" type="file">
+
+            <br><br>
+
+            <label for="ordering-experience">Ordering Experience</label><br>
+
+            <input id="ordering-experience" type="range" min="1" max="10">
 
             <div class="buttons">
 

@@ -1,74 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ziv Celestial - JavaScript Applications</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
             margin: 0;
+            background: #f7f3ea;
+            color: #252a28;
         }
 
-        header {
-            background: #176b45;
-            color: white;
+        body > header {
+            padding: 30px 18px 34px;
+            background: #172b25;
+            color: #fffdf8;
             text-align: center;
-            padding: 30px;
         }
 
-        section {
-            background: white;
-            max-width: 700px;
-            margin: 25px auto;
-            padding: 25px;
-            border-radius: 15px;
+        body > header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            letter-spacing: -.04em;
+        }
+
+        body > header p {
+            margin: 5px 0 0;
+            color: #d3ded5;
+        }
+
+        .demo-grid {
+            display: grid;
+            width: min(1120px, calc(100% - 36px));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin: 26px auto 38px;
+        }
+
+        .demo-grid section {
+            min-width: 0;
+            margin: 0;
+            padding: clamp(19px, 3vw, 26px);
+            border: 1px solid #e4dfd4;
+            border-radius: 14px;
+            background: #fffdf8;
+            box-shadow: 0 10px 28px rgba(23, 43, 37, .07);
         }
 
         h2 {
-            color: #176b45;
+            margin: 0 0 16px;
+            color: #245b45;
+            font-size: 1.18rem;
+            letter-spacing: -.02em;
         }
 
-        input, select, button {
-            padding: 10px;
-            margin: 6px;
+        h3 {
+            color: #34443b;
+        }
+
+        label {
+            display: block;
+            margin: 11px 0 5px;
+            color: #34443b;
+            font-weight: 650;
+        }
+
+        input:not([type="radio"]),
+        select {
+            max-width: 100%;
+            min-height: 41px;
+            padding: 9px 11px;
+            border: 1px solid #d5d0c5;
+            border-radius: 7px;
+            background: #fff;
+            color: #252a28;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+        }
+
+        input[type="radio"] {
+            accent-color: #245b45;
         }
 
         button {
-            background: #176b45;
-            color: white;
-            border: none;
+            min-height: 40px;
+            margin: 9px 4px 4px 0;
+            padding: 9px 14px;
+            border: 0;
+            border-radius: 7px;
+            background: #245b45;
+            color: #fffdf8;
+            font-weight: 700;
             cursor: pointer;
-            border-radius: 5px;
         }
 
         button:hover {
-            background: #0f4f32;
+            background: #193f31;
+        }
+
+        .demo-grid p {
+            color: #5f665f;
+        }
+
+        .demo-grid span {
+            color: #193f31;
+            font-weight: 750;
+        }
+
+        #garden {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
         }
 
         #garden img {
-            width: 90px;
-            height: 90px;
+            width: 72px;
+            height: 72px;
+            margin: 0;
+            border-radius: 9px;
             object-fit: cover;
-            margin: 5px;
         }
 
         #coin {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
+            width: 112px;
+            height: 112px;
             border-radius: 50%;
+            object-fit: cover;
         }
 
-        span {
-            font-weight: bold;
+        @media (max-width: 700px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+    <link rel="stylesheet" href="ziv-theme.css">
 </head>
 
 <body>
-    <div style="position:fixed;top:12px;right:12px;z-index:1000;">
-        <select aria-label="Current page: Experiment 5. Select an experiment to navigate." onchange="window.location.href=this.value" style="width:auto;max-width:calc(100vw - 24px);padding:9px 12px;border:1px solid #d5d0ca;border-radius:8px;background:#fff;color:#292522;font:14px Arial,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer;">
+    <nav class="experiment-navigation" aria-label="Experiment navigation">
+        <a href="index.html">Home</a>
+        <select aria-label="Current page: Experiment 5. Select an experiment to navigate." onchange="window.location.href=this.value">
             <option value="exp1.html">Experiment 1</option>
             <option value="exp2.html">Experiment 2</option>
             <option value="exp3.html">Experiment 3</option>
@@ -80,7 +162,7 @@
             <option value="exp9.html">Experiment 9</option>
             <option value="exp10.html">Experiment 10</option>
         </select>
-    </div>
+    </nav>
 
 <header>
     <h1>Ziv Celestial</h1>
@@ -89,9 +171,11 @@
 
 
 <!-- QUESTION 1 -->
+<main class="demo-grid">
 <section>
     <h2>1. Shortest and Longest Word</h2>
 
+    <label for="sentence">Enter a sentence</label>
     <input type="text" id="sentence"
            value="Web Development Tutorial">
 
@@ -111,9 +195,11 @@
 <section>
     <h2>2. BMI Calculator</h2>
 
+    <label for="weight">Weight (kg)</label>
     <input type="number" id="weight"
            placeholder="Weight (kg)">
 
+    <label for="height">Height (m)</label>
     <input type="number" id="height"
            placeholder="Height (m)">
 
@@ -137,14 +223,14 @@
 <section>
     <h2>3. Fruit Farm</h2>
 
-    <label>Rows:</label>
+    <label for="rows">Rows:</label>
 
     <input type="number"
            id="rows"
            value="2"
            min="1">
 
-    <label>Columns:</label>
+    <label for="columns">Columns:</label>
 
     <input type="number"
            id="columns"
@@ -165,18 +251,21 @@
 <section>
     <h2>4. Currency Converter</h2>
 
+    <label for="amount">Amount to convert</label>
     <input type="number"
            id="amount"
            placeholder="Enter amount">
 
     <br>
 
-    <select id="from">
+    <label for="from">From</label>
+    <select id="from" aria-label="Convert from">
         <option value="INR">Indian Rupee</option>
         <option value="USD">US Dollar</option>
     </select>
 
-    <select id="to">
+    <label for="to">To</label>
+    <select id="to" aria-label="Convert to">
         <option value="USD">US Dollar</option>
         <option value="INR">Indian Rupee</option>
     </select>
@@ -221,7 +310,7 @@
 <section>
     <h2>6. Birthday Cake Order</h2>
 
-    <label>½ kg Cake:</label>
+    <label for="small">½ kg Cake:</label>
     <input type="number"
            id="small"
            value="0"
@@ -229,7 +318,7 @@
 
     <br>
 
-    <label>1 kg Cake:</label>
+    <label for="medium">1 kg Cake:</label>
     <input type="number"
            id="medium"
            value="0"
@@ -237,7 +326,7 @@
 
     <br>
 
-    <label>2 kg Cake:</label>
+    <label for="large">2 kg Cake:</label>
     <input type="number"
            id="large"
            value="0"
@@ -278,6 +367,7 @@
     </p>
 </section>
 
+</main>
 
 <script>
 

@@ -1,0 +1,369 @@
+:root {
+    color-scheme: light;
+    --ziv-forest: #172b25;
+    --ziv-green: #245b45;
+    --ziv-green-deep: #193f31;
+    --ziv-sage: #a8b9a0;
+    --ziv-cream: #f7f3ea;
+    --ziv-ivory: #fffdf8;
+    --ziv-beige: #ede5d7;
+    --ziv-terracotta: #c87954;
+    --ziv-charcoal: #252a28;
+    --ziv-muted: #777b75;
+    --ziv-border: #e4dfd4;
+    --ziv-shadow: 0 10px 28px rgba(23, 43, 37, .08);
+    --ziv-font-body: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
+    --ziv-font-heading: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--ziv-font-body);
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+a,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--ziv-sage);
+    outline-offset: 3px;
+}
+
+body .experiment-navigation {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    min-height: 58px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 9px clamp(16px, 5vw, 7%);
+    border-bottom: 1px solid rgba(23, 43, 37, .08);
+    background: var(--ziv-cream);
+}
+
+body .experiment-navigation a,
+body .experiment-navigation select {
+    min-height: 40px;
+    border: 1px solid #d5d0c5;
+    border-radius: 7px;
+    font: 600 14px var(--ziv-font-body);
+}
+
+body .experiment-navigation a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    background: var(--ziv-forest);
+    color: var(--ziv-ivory);
+    text-decoration: none;
+    transition: background-color .18s ease;
+}
+
+body .experiment-navigation a:hover {
+    background: var(--ziv-green);
+}
+
+body .experiment-navigation select {
+    width: auto;
+    max-width: calc(100vw - 130px);
+    padding: 0 32px 0 11px;
+    background-color: var(--ziv-ivory);
+    color: var(--ziv-charcoal);
+    cursor: pointer;
+}
+
+body .experiment-navigation a:focus-visible,
+body .experiment-navigation select:focus-visible {
+    outline-color: var(--ziv-terracotta);
+}
+
+@media (max-width: 480px) {
+    body .experiment-navigation {
+        min-height: 54px;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+
+    body .experiment-navigation a,
+    body .experiment-navigation select {
+        min-height: 38px;
+        font-size: 13px;
+    }
+
+    body .experiment-navigation a {
+        padding: 0 12px;
+    }
+
+    body .experiment-navigation select {
+        max-width: calc(100vw - 118px);
+        padding-right: 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+.experiment-8,
+.experiment-9,
+.experiment-10 {
+    background: var(--ziv-cream);
+    color: var(--ziv-charcoal);
+    font-family: var(--ziv-font-body);
+    line-height: 1.6;
+}
+
+.experiment-8 header,
+.experiment-9 header,
+.experiment-10 header {
+    min-height: 76px;
+    align-items: center;
+    background: var(--ziv-forest);
+    color: var(--ziv-ivory);
+}
+
+.experiment-8 header strong,
+.experiment-9 header strong,
+.experiment-10 header strong {
+    font-size: 1.25rem;
+    letter-spacing: -.025em;
+}
+
+.experiment-8 .wrap,
+.experiment-9 .wrap,
+.experiment-10 .wrap {
+    width: min(1050px, calc(100% - 36px));
+    margin: 28px auto 38px;
+    padding: 0;
+}
+
+.experiment-8 .hero,
+.experiment-9 .hero,
+.experiment-10 .hero {
+    padding: clamp(22px, 4vw, 34px);
+    border: 1px solid #ead8c7;
+    border-radius: 15px;
+    background: #f1e8d9;
+}
+
+.experiment-8 .hero h1,
+.experiment-9 .hero h1,
+.experiment-10 .hero h1 {
+    margin-top: 0;
+    color: var(--ziv-forest);
+    font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+    letter-spacing: -.04em;
+    line-height: 1.25;
+}
+
+.experiment-8 .hero p,
+.experiment-9 .hero p,
+.experiment-10 .hero p {
+    margin-bottom: 0;
+    color: #5f665f;
+}
+
+.experiment-8 .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.experiment-8 .card,
+.experiment-9 .panel,
+.experiment-10 .panel {
+    min-width: 0;
+    padding: clamp(19px, 3vw, 25px);
+    border: 1px solid var(--ziv-border);
+    border-radius: 14px;
+    background: var(--ziv-ivory);
+    box-shadow: var(--ziv-shadow);
+}
+
+.experiment-8 .card h2,
+.experiment-9 .panel h2,
+.experiment-10 .panel h2 {
+    margin-top: 0;
+    color: var(--ziv-green);
+    font-size: 1.18rem;
+    letter-spacing: -.02em;
+}
+
+.experiment-8 label,
+.experiment-9 main label,
+.experiment-10 main label {
+    color: #34443b;
+    font-weight: 650;
+}
+
+.experiment-8 input,
+.experiment-8 textarea,
+.experiment-9 main input,
+.experiment-9 main select,
+.experiment-10 main input,
+.experiment-10 main select {
+    min-height: 41px;
+    border: 1px solid #d5d0c5;
+    border-radius: 7px;
+    background: #fff;
+    color: var(--ziv-charcoal);
+}
+
+.experiment-8 input,
+.experiment-8 textarea {
+    margin: 7px 0;
+}
+
+.experiment-9 main input,
+.experiment-9 main select,
+.experiment-10 main input,
+.experiment-10 main select {
+    padding: 9px 11px;
+}
+
+.experiment-8 button,
+.experiment-9 main button,
+.experiment-10 main button {
+    min-height: 40px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--ziv-green);
+    color: var(--ziv-ivory);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.experiment-8 button:hover,
+.experiment-9 main button:hover,
+.experiment-10 main button:hover {
+    background: var(--ziv-green-deep);
+}
+
+.experiment-8 li {
+    padding: 7px 0;
+}
+
+.experiment-8 small,
+.experiment-9 .hint {
+    color: var(--ziv-muted);
+}
+
+.experiment-9 .wrap {
+    max-width: 900px;
+}
+
+.experiment-9 .hero {
+    margin-bottom: 18px;
+}
+
+.experiment-9 .route-links {
+    gap: 9px;
+    margin-bottom: 16px;
+}
+
+.experiment-9 .route-links a {
+    border: 1px solid var(--ziv-border);
+    border-radius: 7px;
+    background: var(--ziv-ivory);
+    color: var(--ziv-green);
+    font-weight: 700;
+}
+
+.experiment-9 .route-links a:hover {
+    background: #e9eee4;
+}
+
+.experiment-9 input.ng-invalid.ng-touched,
+.experiment-9 select.ng-invalid.ng-touched {
+    border: 2px solid #b94a3f;
+}
+
+.experiment-9 input.ng-valid.ng-touched,
+.experiment-9 select.ng-valid.ng-touched {
+    border: 2px solid #358258;
+}
+
+.experiment-9 .error {
+    color: #a7322a;
+}
+
+.experiment-10 .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.experiment-10 .status {
+    color: var(--ziv-green);
+    line-height: 1.5;
+}
+
+.experiment-10 table {
+    color: var(--ziv-charcoal);
+}
+
+.experiment-10 th {
+    background: #e9eee4;
+    color: var(--ziv-forest);
+}
+
+.experiment-10 td {
+    border-color: var(--ziv-border);
+}
+
+.experiment-10 main > p {
+    padding: 16px 18px;
+    border: 1px solid var(--ziv-border);
+    border-radius: 10px;
+    background: var(--ziv-ivory);
+    color: #5f665f;
+    line-height: 1.65;
+}
+
+.experiment-10 code {
+    background: #f1e8d9;
+    color: var(--ziv-forest);
+}
+
+@media (max-width: 720px) {
+    .experiment-10 .grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .experiment-10 table {
+        display: block;
+        overflow-x: auto;
+    }
+}

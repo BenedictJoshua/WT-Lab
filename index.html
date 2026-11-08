@@ -3,19 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f5f7fb">
+    <meta name="theme-color" content="#172b25">
     <meta name="description" content="Explore the ten Web Technology Laboratory experiments from Karunya Institute of Technology and Sciences.">
     <title>Web Technology Laboratory | Karunya Institute of Technology and Sciences</title>
     <style>
         :root {
             color-scheme: light;
-            --ink: #17243b;
-            --muted: #64728a;
-            --brand: #2459d3;
-            --brand-dark: #1944aa;
-            --line: #e5eaf2;
-            --surface: #ffffff;
-            --background: #f5f7fb;
+            --ink: #172b25;
+            --muted: #777b75;
+            --brand: #245b45;
+            --brand-dark: #193f31;
+            --line: #e4dfd4;
+            --surface: #fffdf8;
+            --background: #f7f3ea;
+            --accent: #c87954;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 25px;
+            padding: 12px 18px;
+            border-radius: 9px;
+            background: var(--brand);
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 750;
+            text-decoration: none;
+            transition: background .18s ease, transform .18s ease;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            background: var(--brand-dark);
+        }
+
+        .hero-cta:focus-visible,
+        .header-nav a:focus-visible {
+            outline: 3px solid #b2cfaa;
+            outline-offset: 4px;
         }
 
         * {
@@ -24,11 +51,9 @@
 
         body {
             margin: 0;
-            background:
-                radial-gradient(ellipse at 85% 0%, rgba(203, 224, 255, .55), transparent 34rem),
-                var(--background);
+            background: var(--background);
             color: var(--ink);
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
             line-height: 1.6;
         }
 
@@ -42,33 +67,88 @@
         }
 
         .site-header {
-            padding: 28px 0 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 0;
         }
 
-        .institution {
+        .brand-lockup {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            color: #43536c;
-            font-size: .88rem;
-            font-weight: 650;
-            letter-spacing: .01em;
+            gap: 13px;
+            text-decoration: none;
         }
 
-        .institution-mark {
-            display: grid;
-            width: 34px;
-            height: 34px;
-            place-items: center;
-            border-radius: 11px;
-            background: #e4edff;
-            color: var(--brand);
+        .brand-logo {
+            display: block;
+            width: 76px;
+            height: 62px;
+            border-radius: 9px;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.38rem;
+            font-weight: 700;
+            letter-spacing: .025em;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            color: var(--muted);
             font-size: .9rem;
-            font-weight: 800;
+            font-weight: 650;
+        }
+
+        .header-nav a {
+            text-decoration: none;
+        }
+
+        .header-nav a:hover {
+            color: var(--brand);
+        }
+
+        .project-label {
+            padding: 8px 12px;
+            border: 1px solid #d8dfd3;
+            border-radius: 999px;
+            color: var(--brand-dark);
+            font-size: .76rem;
+            font-weight: 750;
+            letter-spacing: .025em;
         }
 
         .hero {
-            padding: 58px 0 48px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+            align-items: center;
+            gap: clamp(24px, 5vw, 64px);
+            margin: 18px auto 54px;
+            padding: clamp(28px, 5vw, 60px);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--surface);
+            box-shadow: 0 16px 42px rgba(23, 43, 37, .08);
+        }
+
+        .hero-content {
+            min-width: 0;
+        }
+
+        .hero-image {
+            display: block;
+            width: 100%;
+            height: clamp(230px, 30vw, 360px);
+            border-radius: 18px;
+            object-fit: cover;
+            object-position: center;
         }
 
         .eyebrow {
@@ -131,14 +211,14 @@
             border: 1px solid var(--line);
             border-radius: 18px;
             background: var(--surface);
-            box-shadow: 0 8px 26px rgba(27, 46, 79, .045);
+            box-shadow: 0 8px 26px rgba(23, 43, 37, .05);
             transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
         }
 
         .experiment-card:hover {
             transform: translateY(-4px);
-            border-color: #c9d8f6;
-            box-shadow: 0 16px 34px rgba(27, 46, 79, .1);
+            border-color: #cbd6c7;
+            box-shadow: 0 16px 34px rgba(23, 43, 37, .11);
         }
 
         .card-topline {
@@ -156,7 +236,7 @@
             padding: 0 10px;
             place-items: center;
             border-radius: 10px;
-            background: #edf2ff;
+            background: #e9eee4;
             color: var(--brand);
             font-size: .78rem;
             font-weight: 800;
@@ -164,7 +244,7 @@
         }
 
         .card-index {
-            color: #9aa6b8;
+            color: #929187;
             font-size: .78rem;
             font-weight: 650;
         }
@@ -210,7 +290,7 @@
 
         .card-link:focus-visible {
             border-radius: 4px;
-            outline: 3px solid #9db8ff;
+            outline: 3px solid #a8b9a0;
             outline-offset: 4px;
         }
 
@@ -232,9 +312,20 @@
             margin: 0;
         }
 
+        .footer-brand {
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.08rem;
+            font-weight: 700;
+        }
+
         @media (max-width: 850px) {
             .experiment-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero {
+                grid-template-columns: minmax(0, 1fr) minmax(220px, .8fr);
             }
         }
 
@@ -244,20 +335,44 @@
             }
 
             .site-header {
-                padding-top: 20px;
-            }
-
-            .institution {
                 align-items: flex-start;
-                font-size: .78rem;
+                flex-direction: column;
+                gap: 12px;
             }
 
-            .institution-mark {
-                flex: 0 0 34px;
+            .brand-logo {
+                width: 62px;
+                height: 52px;
+            }
+
+            .brand-name {
+                font-size: 1.18rem;
+            }
+
+            .header-nav {
+                width: 100%;
+                justify-content: space-between;
+                gap: 12px;
+                font-size: .84rem;
+            }
+
+            .project-label {
+                padding: 6px 9px;
+                font-size: .68rem;
             }
 
             .hero {
-                padding: 46px 0 36px;
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-top: 10px;
+                margin-bottom: 38px;
+                padding: 24px;
+                border-radius: 18px;
+            }
+
+            .hero-image {
+                height: 220px;
+                grid-row: 1;
             }
 
             .section-heading {
@@ -295,27 +410,36 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="ziv-theme.css">
 </head>
 <body>
     <header class="site-header page-shell">
-        <div class="institution">
-            <span class="institution-mark" aria-hidden="true">K</span>
-            <span>Karunya Institute of Technology and Sciences</span>
-        </div>
+        <a class="brand-lockup" href="index.html" aria-label="Ziv Celestial home">
+            <img class="brand-logo" src="images/logo.png" alt="Ziv Celestial logo">
+            <span class="brand-name">Ziv Celestial</span>
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="#experiments">Experiments</a>
+            <span class="project-label">Web Technology Lab Project</span>
+        </nav>
     </header>
 
     <main>
         <section class="hero page-shell" aria-labelledby="page-title">
-            <p class="eyebrow">Web Technology Lab</p>
-            <h1 id="page-title">Web Technology Laboratory</h1>
-            <p class="hero-copy">
-                Explore a collection of 10 hands-on experiments covering the foundations
-                of modern web development, from HTML and CSS to interactive JavaScript,
-                AngularJS, and server-side form handling.
-            </p>
+            <div class="hero-content">
+                <p class="eyebrow">Karunya Institute of Technology and Sciences</p>
+                <h1 id="page-title">Technology meets convenience.</h1>
+                <p class="hero-copy">
+                    Explore the development of Ziv Celestial through ten Web Technology
+                    Laboratory experiments, covering modern web design, interactivity,
+                    responsive interfaces and server-side development.
+                </p>
+                <a class="hero-cta" href="#experiments">Explore the experiments <span aria-hidden="true">→</span></a>
+            </div>
+            <img class="hero-image" src="images/sandwich.jpg" alt="Fresh Ziv Celestial sandwich">
         </section>
 
-        <section class="page-shell" aria-labelledby="experiments-heading">
+        <section class="page-shell" id="experiments" aria-labelledby="experiments-heading">
             <div class="section-heading">
                 <h2 id="experiments-heading">Explore the experiments</h2>
                 <p>Choose an experiment to get started.</p>
@@ -324,63 +448,63 @@
             <div class="experiment-grid">
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">01</span><span class="card-index">01 / 10</span></div>
-                    <h3>Food Pre-Order Platform</h3>
-                    <p>Build a structured food pre-order page with sections, images, menus, and contact links.</p>
-                    <a class="card-link" href="exp1.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>Design a Website Using HTML5</h3>
+                    <p>Build a semantic food pre-order website using HTML5 content, images, links and menu tables.</p>
+                    <a class="card-link" href="exp1.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">02</span><span class="card-index">02 / 10</span></div>
-                    <h3>Customer Registration</h3>
-                    <p>Explore HTML form controls for collecting customer details and preferences.</p>
-                    <a class="card-link" href="exp2.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>Working with HTML5 Form Elements</h3>
+                    <p>Explore native HTML5 inputs, selection controls, validation and customer preferences.</p>
+                    <a class="card-link" href="exp2.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">03</span><span class="card-index">03 / 10</span></div>
-                    <h3>Responsive Homepage</h3>
-                    <p>Create a responsive food homepage with a navigation bar, sidebar, and item cards.</p>
-                    <a class="card-link" href="exp3.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>Responsive Webpage Design Using HTML5 and CSS3</h3>
+                    <p>Use semantic HTML, Flexbox and media queries to adapt a food website across screen sizes.</p>
+                    <a class="card-link" href="exp3.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">04</span><span class="card-index">04 / 10</span></div>
-                    <h3>Advanced CSS3</h3>
-                    <p>Practice CSS backgrounds, borders, selectors, pseudo-classes, and responsive styling.</p>
-                    <a class="card-link" href="exp4.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>Webpage Design Using Advanced CSS3</h3>
+                    <p>Demonstrate CSS backgrounds, border images, selectors, pseudo-classes and responsive rules.</p>
+                    <a class="card-link" href="exp4.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">05</span><span class="card-index">05 / 10</span></div>
-                    <h3>JavaScript Applications</h3>
-                    <p>Try JavaScript DOM interactions, calculators, a fruit farm, and other small applications.</p>
-                    <a class="card-link" href="exp5.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>JavaScript DOM Elements and Events</h3>
+                    <p>Practice DOM updates and events through word, BMI, currency, garden, coin and order tools.</p>
+                    <a class="card-link" href="exp5.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">06</span><span class="card-index">06 / 10</span></div>
-                    <h3>Campus Food Experience</h3>
-                    <p>Explore an interactive campus food page with offers, a live clock, and visual effects.</p>
-                    <a class="card-link" href="exp6.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>JavaScript Timer Functions and Arrays</h3>
+                    <p>Explore timers, arrays, dynamic content, a live clock and interactive food-page effects.</p>
+                    <a class="card-link" href="exp6.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">07</span><span class="card-index">07 / 10</span></div>
-                    <h3>Working with jQuery</h3>
-                    <p>Use jQuery events and DOM updates for calculators and a custom delivery-bike preview.</p>
-                    <a class="card-link" href="exp7.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>jQuery Applications</h3>
+                    <p>Use jQuery selectors, event handling and DOM updates in interactive food-service utilities.</p>
+                    <a class="card-link" href="exp7.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">08</span><span class="card-index">08 / 10</span></div>
                     <h3>AngularJS Directives</h3>
-                    <p>Practice AngularJS data binding, expressions, repeat directives, and interactive lists.</p>
-                    <a class="card-link" href="exp8.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <p>Explore AngularJS expressions, data binding, repeated content and interactive lists.</p>
+                    <a class="card-link" href="exp8.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">09</span><span class="card-index">09 / 10</span></div>
-                    <h3>Validation &amp; Routing</h3>
-                    <p>Explore AngularJS form validation and route-based views with ngRoute.</p>
-                    <a class="card-link" href="exp9.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>Form Validation and Routing Using AngularJS</h3>
+                    <p>Build a validated registration form and navigate among views with AngularJS routing.</p>
+                    <a class="card-link" href="exp9.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
                 <article class="experiment-card">
                     <div class="card-topline"><span class="experiment-number">10</span><span class="card-index">10 / 10</span></div>
-                    <h3>Node.js &amp; MongoDB</h3>
-                    <p>Submit registration details to a Node.js service and view records stored in MongoDB.</p>
-                    <a class="card-link" href="exp10.html">Open experiment <span aria-hidden="true">→</span></a>
+                    <h3>HTML Form Request Handling Using Node.js and MongoDB</h3>
+                    <p>Submit customer registrations through a Node.js API and retrieve records from MongoDB.</p>
+                    <a class="card-link" href="exp10.html">Explore Experiment <span aria-hidden="true">→</span></a>
                 </article>
             </div>
         </section>
@@ -388,7 +512,8 @@
 
     <footer>
         <div class="page-shell footer-inner">
-            <p>Web Technology Lab Project</p>
+            <p class="footer-brand">Ziv Celestial</p>
+            <p>Web Technology Laboratory Project</p>
             <p>Karunya Institute of Technology and Sciences</p>
         </div>
     </footer>
